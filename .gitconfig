@@ -1,0 +1,26 @@
+# This is Git's per-user configuration file.
+[user]
+        name = dublook
+        email = kota.futami@sapiens-inc.jp
+[core]
+        editor = vim
+[alias]
+        co = commit
+        br = branch
+        st = status
+        ch = checkout
+        a = add -p
+        rst = rest
+        log1 = log --oneline
+        graph = log --graph
+        bra = branch -a
+        l = pull --prune origin HEAD
+        s = push origin HEAD
+        delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+        fp = !git fetch --prune && git delete-merged-branches
+        a = -c interactive.diffFilter=\"git diff --color-words\" add -p
+        issue = !sh -c 'git checkout -b issue-$1' -
+        to-master = !git fp && git ch master && git fp
+        diff-char = !git diff --word-diff-regex=$'[^\\x80-\\xbf][\\x80-\\xbf]*' --word-diff=color
+[ui]
+        color = true
