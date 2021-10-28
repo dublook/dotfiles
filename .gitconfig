@@ -4,6 +4,7 @@
         email = kota.futami@sapiens-inc.jp
 [core]
         editor = vim
+	quotepath = false
 [alias]
         co = commit
         br = branch
@@ -24,3 +25,5 @@
         diff-char = !git diff --word-diff-regex=$'[^\\x80-\\xbf][\\x80-\\xbf]*' --word-diff=color
 [ui]
         color = true
+[pull]
+	rebase = false
