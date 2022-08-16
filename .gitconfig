@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
         name = dublook
-        email = kota.futami@sapiens-inc.jp
+        email = kotafutami+dev@gmail.com
 [core]
         editor = vim
 	quotepath = false
