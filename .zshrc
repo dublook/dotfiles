@@ -47,12 +47,15 @@ PROMPT='%T %~ %F{magenta}
 $%f '
 RPROMPT='${vcs_info_msg_0_}'
 
-
-
+# Alias
 alias grep="grep --color=auto"
+alias load-env="export \$(cat .env | grep -v ^# | xargs)"
+alias load-envdev="export \$(cat .env.dev | grep -v ^# | xargs)"
+alias ng-serve="node --max_old_space_size=16384 node_modules/@angular/cli/bin/ng serve"
+alias python="python3"
+# LION BOLT
 alias to-webapp="cd ~/development/sapiens/lionbolt-webapp/"
 alias to-adminwebapp="cd ~/development/sapiens/lionbolt-admin-webapp/"
-alias to-work="cd ~/development/sapiens/lionbolt-webapp-work/"
 alias to-search="cd ~/development/sapiens/lionbolt-search-api-v2/"
 alias to-books="cd ~/development/sapiens/lionbolt-admin-backend-books/"
 alias to-docs="cd ~/development/sapiens/lionbolt-admin-backend-documents/"
@@ -60,20 +63,13 @@ alias to-tenants="cd ~/development/sapiens/lionbolt-admin-backend-tenants/"
 alias to-api="cd ~/development/sapiens/lionbolt-app-backend/"
 alias to-cognito="cd ~/development/sapiens/lionbolt-app-cognito/"
 alias to-pub="cd ~/development/sapiens/lionbolt-contents-publicomments/"
-alias to-infra="cd ~/development/sapiens/lionbolt-backend-infra/"
+alias to-infra="cd ~/development/sapiens/lionbolt-infra/"
 alias to-prox="cd ~/development/sapiens/lionbolt-backend-service-proxies/"
-alias to-hdd="cd /Volumes/sap190106-1/books"
-alias to-covers="cd /Volumes/GoogleDrive/My\ Drive/lg_法律書へのアクセスを便利にしよう_since201812/法律事務所/n_長島・大野・常松法律事務所/所在検索/文献リスト書影画像/bookId"
-alias load-env="export \$(cat .env | grep -v ^# | xargs)"
-alias load-envdev="export \$(cat .env.dev | grep -v ^# | xargs)"
-alias raspi3="ssh -i ~/.ssh/raspi pi@homebridge.local"
-alias gst="git status"
-alias gps="git push"
-alias gpl="git pull --prune"
-alias ga="git add -p"
-alias ng-serve="node --max_old_space_size=16384 node_modules/@angular/cli/bin/ng serve"
-alias to-midofront="cd ~/development/midotech/sb-front"
-alias to-midobackend="cd ~/development/midotech/sb-backend"
+# SeLn
+alias to-bsj="cd ~/development/seln/bookstores"
+
+# git diffでの日本語文字化けを防ぐ
+export GIT_PAGER="LESSCHARSET=utf-8 less"
 
 # git settings
 # source ~/.git-completion.bash
@@ -100,18 +96,14 @@ alias to-midobackend="cd ~/development/midotech/sb-backend"
 # [ -f /Users/kotafutami/.nodebrew/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /Users/kotafutami/.nodebrew/node/v6.10.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.nodebrew/current/bin/node:$PATH"
 
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-# [ -f /Users/kotafutami/.config/yarn/global/node_modules/tabtab/.completions/slss.bash ] && . /Users/kotafutami/.config/yarn/global/node_modules/tabtab/.completions/slss.bash
-
-# https://github.com/zsh-users/zsh-completions
-# if type brew &>/dev/null; then
-#   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-# 
-#   autoload -Uz compinit
-#   compinit
-# fi
-
 # anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+if [ -d "$HOME/.anyenv" ]; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+fi
+
+# 1Password CLI
+# https://developer.1password.com/docs/cli/get-started#shell-completion
+if [ -x "$(command -v op)" ]; then
+  eval "$(op completion zsh)"; compdef _op op
+fi
