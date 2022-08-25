@@ -53,18 +53,18 @@ colorscheme molokai
 set fileformats=unix,dos,mac
 
 " ハイライトを有効化する
-" syntax enable
+syntax enable
 
 " 挿入モードでTABを挿入するとき、代わりに適切な数の空白を使う
 set expandtab
 
 " 新しい行を開始したとき、新しい行のインデントを現在行と同じにする
-" set autoindent
+set autoindent
 
 " ファイル形式の検出の有効化する
 " ファイル形式別プラグインのロードを有効化する
 " ファイル形式別インデントのロードを有効化する
-" filetype plugin indent on
+filetype plugin indent on
 " 
 " let g:user_emmet_mode = 'iv'
 " let g:user_emmet_leader_key = '<C-Y>'
